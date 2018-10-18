@@ -1,8 +1,7 @@
-package com.guxiu.transation.dao.impl;
+package com.guxiu.transaction.dao.jdbctemplate.impl;
 
-import com.guxiu.transation.dao.AccountDao;
-import com.guxiu.transation.domain.Account;
-import com.sun.rowset.internal.Row;
+import com.guxiu.transaction.dao.jdbctemplate.AccountDao;
+import com.guxiu.transaction.domain.Account;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -10,7 +9,7 @@ import org.springframework.jdbc.core.RowMapper;
 import java.util.List;
 
 /**
- * Package: com.guxiu.transation.dao.impl
+ * Package: com.guxiu.transaction.dao.jdbctemplate.impl
  * DESCRIPTION:
  *
  * @author guxiu2008

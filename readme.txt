@@ -74,3 +74,19 @@ SpringJDBC：
             6）PROPAGATION_NEVER – 以非事务方式执行，如果当前存在事务，则抛出异常。
             7）PROPAGATION_NESTED – 如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则进行与PROPAGATION_REQUIRED类似的操作。
             备注：常用的两个事务传播属性是1和4，即PROPAGATION_REQUIRED，PROPAGATION_REQUIRES_NEW
+    3、TransactionStatus
+        TransactionStatus接口是事务的状态，它描述了某一时间点上事务的状态信息。该接口中包含6个方法，具体如下：
+            1）void flush()：刷新事务
+            2）boolean hasSavepoint()：获取事务是否完成
+            3）boolean isCompleted()：获取事务是否完成
+            4）boolean isNewTransaction()：获取是否回滚
+            5）boolean isRollbackOnly()：获取是否回滚
+            6）void setRollbackOnly()：设置事务回滚
+二、事务管理的方式
+    1、编程式事务管理
+        网上看了例子，传统编程式事务管理，需要在每一个dao类仲增加PlatformTransactionManager对象作为成员，每个更新数据库的方法都需要配合TransactionDefinition和TransactionStatus对象控制提交和回滚，十分复杂，不推荐使用！
+        https://www.cnblogs.com/EasonJim/p/6911208.html
+    2、声明式事务管理
+        通过AOP技术实现的事务管理，其主要思想是将事务管理作为一个“切面”代码单独编写，然后通过AOP技术将事务管理的“切面”代码织入到业务目标类中。
+三、基于xml方式的声明式事务
+    Spring提供了tx命名空间来配置事务，tx命名空间下提供了<tx:advice>元素来配置事务的通知（增强处理）。当使用<tx:advice>元素配置了事务的增强处理后，就可以通过编写的AOP配置，让Spring自动对目标生成代理。

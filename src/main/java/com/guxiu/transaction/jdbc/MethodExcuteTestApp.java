@@ -1,11 +1,11 @@
-package com.guxiu.transation.jdbc;
+package com.guxiu.transaction.jdbc;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
- * Package: com.guxiu.transation.jdbc
+ * Package: com.guxiu.transaction.jdbc
  * DESCRIPTION:
  *
  * @author guxiu2008

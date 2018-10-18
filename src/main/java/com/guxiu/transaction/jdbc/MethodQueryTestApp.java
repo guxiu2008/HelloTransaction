@@ -1,14 +1,14 @@
-package com.guxiu.transation.jdbc;
+package com.guxiu.transaction.jdbc;
 
-import com.guxiu.transation.dao.AccountDao;
-import com.guxiu.transation.domain.Account;
+import com.guxiu.transaction.dao.jdbctemplate.AccountDao;
+import com.guxiu.transaction.domain.Account;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
 
 /**
- * Package: com.guxiu.transation.jdbc
+ * Package: com.guxiu.transaction.jdbc
  * DESCRIPTION:
  *
  * @author guxiu2008

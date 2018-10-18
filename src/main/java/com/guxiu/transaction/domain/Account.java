@@ -1,7 +1,7 @@
-package com.guxiu.transation.domain;
+package com.guxiu.transaction.domain;
 
 /**
- * Package: com.guxiu.transation.domain
+ * Package: com.guxiu.transaction.domain
  * DESCRIPTION:
  *
  * @author guxiu2008

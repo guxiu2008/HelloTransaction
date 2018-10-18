@@ -1,11 +1,11 @@
-package com.guxiu.transation.dao;
+package com.guxiu.transaction.dao.jdbctemplate;
 
-import com.guxiu.transation.domain.Account;
+import com.guxiu.transaction.domain.Account;
 
 import java.util.List;
 
 /**
- * Package: com.guxiu.transation.dao
+ * Package: com.guxiu.transaction.dao
  * DESCRIPTION:
  *
  * @author guxiu2008

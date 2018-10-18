@@ -19,7 +19,7 @@
             <property name="dataSource" ref="dataSource" />
         </bean>
 
-        <bean id="accountDao" class="com.guxiu.transation.dao.impl.AccountDaoImpl">
+        <bean id="accountDao" class="com.guxiu.transaction.dao.jdbctemplate.impl.AccountDaoImpl">
             <property name="jdbcTemplate" ref="jdbcTemplate" />
         </bean>
     </beans>
