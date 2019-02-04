@@ -9,4 +9,6 @@ package com.guxiu.transaction.dao.transaction;
  **/
 public interface AccountTransferDao {
     public void transfer(String outUser, String inUser, Double money);
+
+    public void transferAnnotation(String outUser, String inUser, Double money);
 }

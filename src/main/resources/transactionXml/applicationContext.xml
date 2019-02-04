@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <beans>
+        <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+            <!-- 数据库驱动 -->
+            <property name="driverClassName" value="org.mariadb.jdbc.Driver" />
+            <!-- 数据库url -->
+            <property name="url" value="jdbc:mariadb://192.168.81.130:3306/test" />
+            <!-- 数据库用户名 -->
+            <property name="username" value="Allan" />
+            <!-- 数据库密码 -->
+            <property name="password" value="123" />
+        </bean>
+
+        <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+            <property name="dataSource" ref="dataSource" />
+        </bean>
+
+        <bean id="accountTransationDao" class="com.guxiu.transaction.dao.transaction.impl.AccountTransferDaoImpl">
+            <property name="jdbcTemplate" ref="jdbcTemplate" />
+        </bean>
+
+        <!-- 事务管理器,依赖于数据源 -->
+        <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+            <property name="dataSource" ref="dataSource" />
+        </bean>
+
+        <!-- 编写通知: 对事务进行增强(通知),需要编写对切入点和具体执行事务细节 -->
+        <tx:advice transaction-manager="transactionManager" id="txAdvice">
+            <tx:attributes>
+                <tx:method name="*" propagation="REQUIRED" isolation="DEFAULT" read-only="false"/>
+            </tx:attributes>
+        </tx:advice>
+
+        <!-- 编写AOP， 让spring自动对目标生成代理,需要使用AspectJ的表达式 -->
+        <aop:config>
+            <!-- 切入点 -->
+            <aop:pointcut id="txPointCut" expression="execution(* com.guxiu.transaction.dao.transaction.*.*(..))" />
+            <!-- 切面 -->
+            <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut" />
+        </aop:config>
+    </beans>
+</beans>

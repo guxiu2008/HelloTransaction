@@ -90,3 +90,10 @@ SpringJDBC：
         通过AOP技术实现的事务管理，其主要思想是将事务管理作为一个“切面”代码单独编写，然后通过AOP技术将事务管理的“切面”代码织入到业务目标类中。
 三、基于xml方式的声明式事务
     Spring提供了tx命名空间来配置事务，tx命名空间下提供了<tx:advice>元素来配置事务的通知（增强处理）。当使用<tx:advice>元素配置了事务的增强处理后，就可以通过编写的AOP配置，让Spring自动对目标生成代理。
+四、基于Annotation方式的声明式事务
+    Spring的声明式事务还可以通过Annotation(注解)的方式来实现，主要做两个事情。
+    1、在Spring容器中注册事务注解驱动,其中transactionManager是Spring配置文件中配置好的bean对象
+        <tx:annotation-driven transaction-manager="transactionManager"/>
+    2、在需要使用事务的Spring Bean类或者Bean类的方法上添加注解@Transactionl
+        如果把注解添加在Bean类上，则表示事务的设置对整个Bean类的方法有效
+        如果把注解添加在某个方法上，则表示只对对应的方法有效
